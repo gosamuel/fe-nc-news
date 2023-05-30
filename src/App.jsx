@@ -3,7 +3,9 @@ import "./App.css";
 import Header from "./Header";
 import Nav from "./Nav";
 import Articles from "./Articles";
-import { Routes, Route } from "react-router-dom";
+import Home from "./Home";
+import { Routes, Route, useParams } from "react-router-dom";
+import ArticlePage from "./ArticlePage";
 
 function App() {
   return (
@@ -11,7 +13,9 @@ function App() {
       <Header />
       <Nav />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/articles" element={<Articles />} />
+        <Route path="/articles/:article_id" element={<ArticlePage />} />
       </Routes>
     </div>
   );

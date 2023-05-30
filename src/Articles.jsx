@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { fetchArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
 
