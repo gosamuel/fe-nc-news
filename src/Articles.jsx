@@ -16,7 +16,6 @@ function Articles() {
     return <p>Loading...</p>;
   } else {
     return articles.map((article) => {
-      console.log(article);
       return <ArticleCard key={article.article_id} article={article} />;
     });
   }
