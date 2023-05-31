@@ -1,14 +1,19 @@
+import { useEffect, useState } from "react";
+import { fetchArticleById } from "../utils/api";
+import ArticlePage from "./ArticlePage";
+import { Link } from "react-router-dom";
+
 function ArticleCard({ article }) {
+  const imageSource = article.article_img_url || "../defaultImage.png";
+
   return (
-    <section className="card">
-      <h2>{article.title}</h2>
-      <h3>{article.author}</h3>
-      <img
-        className="img"
-        alt={article.title}
-        src={article.article_img_url}
-      ></img>
-    </section>
+    <Link to={`/articles/${article.article_id}`}>
+      <section className="card">
+        <h2>{article.title}</h2>
+        <h3>{article.author}</h3>
+        <img className="img" alt={article.title} src={imageSource}></img>
+      </section>
+    </Link>
   );
 }
 
