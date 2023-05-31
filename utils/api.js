@@ -15,3 +15,18 @@ export const fetchArticleById = (article_id) => {
     return res.data.article;
   });
 };
+
+export const fetchCommentsById = (article_id) => {
+  return myApi.get(`/articles/${article_id}/comments`).then((res) => {
+    return res.data.article;
+  });
+};
+
+// export const fetchCommentsById = async (article_id) => {
+//   try {
+//     const comments = await myApi.get(`/articles/${article_id}/comments`);
+//     return comments;
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
