@@ -32,14 +32,15 @@ function ArticlePage() {
           <h3>{article.author}</h3>
           <img className="img" src={article.article_img_url}></img>
           <p>{article.body}</p>
+          <h4>Comments</h4>
         </section>
 
         {comments.map((comment) => {
           return (
             <section className="card" key={comment.comment_id}>
-              <h4>
+              <h5>
                 {comment.author} {comment.votes}
-              </h4>
+              </h5>
               <p>{comment.body}</p>
             </section>
           );
