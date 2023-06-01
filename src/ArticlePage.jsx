@@ -7,6 +7,7 @@ import {
 } from "../utils/api";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./App";
+import CommentBuilder from "./CommentBuilder";
 
 function ArticlePage() {
   const { article_id } = useParams();
@@ -35,7 +36,7 @@ function ArticlePage() {
       setComments(theseComments);
       setIsLoading(false);
     });
-  }, [article_id]);
+  }, [article_id, comments]);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -62,9 +63,11 @@ function ArticlePage() {
           <h4>Comments</h4>
         </section>
 
-        <form>
-          <input defaultValue={`comment as ${currentUser}`}></input>
-        </form>
+        <CommentBuilder
+          article_id={article_id}
+          currentUser={currentUser}
+          setComments={setComments}
+        />
 
         {comments.map((comment) => {
           return (

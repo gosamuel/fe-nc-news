@@ -9,10 +9,10 @@ function Home() {
       <p>Select User</p>
       <button
         onClick={() => {
-          setCurrentUser("Sam");
+          setCurrentUser("grumpy19");
         }}
       >
-        Sam
+        grumpy19
       </button>
       <button
         onClick={() => {
