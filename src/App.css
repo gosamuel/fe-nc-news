@@ -1,7 +1,7 @@
 .app {
   display: flex;
   flex-direction: column;
-  max-width: 80%;
+  max-width: 100%;
   align-items: center;
   text-align: center;
 }
@@ -17,5 +17,4 @@
   max-width: 100%;
   height: auto;
   object-fit: cover;
-  display: block;
 }

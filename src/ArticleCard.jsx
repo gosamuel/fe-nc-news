@@ -10,7 +10,9 @@ function ArticleCard({ article }) {
     <Link to={`/articles/${article.article_id}`}>
       <section className="card">
         <h2>{article.title}</h2>
-        <h3>{article.author}</h3>
+        <h3>
+          {article.author} | Votes: {article.votes}
+        </h3>
         <img className="img" alt={article.title} src={imageSource}></img>
       </section>
     </Link>
