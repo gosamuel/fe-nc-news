@@ -5,11 +5,12 @@ import {
   fetchCommentsById,
   myApi,
 } from "../utils/api";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "./App";
 
 function ArticlePage() {
   const { article_id } = useParams();
-
+  const { currentUser } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
@@ -60,6 +61,10 @@ function ArticlePage() {
           </div>
           <h4>Comments</h4>
         </section>
+
+        <form>
+          <input defaultValue={`comment as ${currentUser}`}></input>
+        </form>
 
         {comments.map((comment) => {
           return (
