@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import {
   changeVote,
+  deleteComment,
   fetchArticleById,
   fetchCommentsById,
   myApi,
@@ -74,6 +75,16 @@ function ArticlePage() {
           return (
             <section className="card" key={index}>
               <h5>{comment.author}</h5>
+              <button
+                onClick={() => {
+                  if (comment.author === currentUser) {
+                    deleteComment(comment.comment_id);
+                  }
+                }}
+              >
+                Delete
+              </button>
+
               <p>{comment.body}</p>
             </section>
           );
