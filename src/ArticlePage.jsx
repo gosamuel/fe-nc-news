@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import {
   changeVote,
+  deleteComment,
   fetchArticleById,
   fetchCommentsById,
   myApi,
@@ -25,6 +26,11 @@ function ArticlePage() {
     });
   }
 
+  function handleDelete(comment) {
+    setComments(comments.filter((com) => com.comment_id !== currentUser));
+    deleteComment(comment.comment_id);
+  }
+
   useEffect(() => {
     fetchArticleById(article_id).then((articleObj) => {
       setArticle(articleObj);
@@ -34,7 +40,7 @@ function ArticlePage() {
       setComments(theseComments);
       setIsLoading(false);
     });
-  }, [article_id]);
+  }, [article_id, comments]);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -74,6 +80,16 @@ function ArticlePage() {
           return (
             <section className="card" key={index}>
               <h5>{comment.author}</h5>
+              <button
+                onClick={() => {
+                  if (comment.author === currentUser) {
+                    handleDelete(comment);
+                  }
+                }}
+              >
+                Delete
+              </button>
+
               <p>{comment.body}</p>
             </section>
           );
