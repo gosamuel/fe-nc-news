@@ -32,3 +32,8 @@ export const sendComment = (currentUser, comment, article_id) => {
     username: currentUser,
   });
 };
+
+export const getArticlesByTopic = async (topic) => {
+  const res = await myApi.get(`/articles/${topic}`);
+  return res.data.result;
+};

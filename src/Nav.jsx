@@ -9,7 +9,11 @@ function Nav() {
     <nav>
       <Link to="/">Home</Link>
       <Link to="/articles">Articles</Link>
-      Topics --- Logged in as {currentUser}
+      Topics:
+      <Link to="/articles/coding">Coding</Link>
+      <Link to="/articles/football">Football</Link>
+      <Link to="/articles/cooking">Cooking</Link>
+      --- Logged in as {currentUser}
     </nav>
   );
 }

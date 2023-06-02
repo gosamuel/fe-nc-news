@@ -6,6 +6,7 @@ import Articles from "./Articles";
 import Home from "./Home";
 import { Routes, Route, useParams } from "react-router-dom";
 import ArticlePage from "./ArticlePage";
+import ArticlesByTopic from "./ArticlesByTopic";
 
 export const UserContext = createContext();
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/articles" element={<Articles />} />
           <Route path="/articles/:article_id" element={<ArticlePage />} />
+          <Route path="/articles/:topic" element={<ArticlesByTopic />} />
         </Routes>
       </UserContext.Provider>
     </div>
