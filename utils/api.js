@@ -23,5 +23,12 @@ export const fetchCommentsById = (article_id) => {
 };
 
 export const changeVote = (article_id, vote) => {
-  return myApi.patch(`articles/${article_id}`, { vote: vote });
+  return myApi.patch(`/articles/${article_id}`, { vote: vote });
+};
+
+export const sendComment = (currentUser, comment, article_id) => {
+  return myApi.post(`/articles/${article_id}/comments`, {
+    body: comment,
+    username: currentUser,
+  });
 };
