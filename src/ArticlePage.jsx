@@ -16,6 +16,7 @@ function ArticlePage() {
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
   const [articleVotes, setArticleVotes] = useState(0);
+  const [newComment, setNewComment] = useState({});
 
   function handleClick(vote) {
     setArticleVotes((articleVotes) => articleVotes + vote);
@@ -29,14 +30,11 @@ function ArticlePage() {
       setArticle(articleObj);
       setArticleVotes(articleObj.votes);
     });
-  }, [article_id]);
-
-  useEffect(() => {
     fetchCommentsById(article_id).then((theseComments) => {
       setComments(theseComments);
       setIsLoading(false);
     });
-  }, [article_id, comments]);
+  }, [article_id]);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -67,11 +65,14 @@ function ArticlePage() {
           article_id={article_id}
           currentUser={currentUser}
           setComments={setComments}
+          newComment={newComment}
+          setNewComment={setNewComment}
+          comments={comments}
         />
 
-        {comments.map((comment) => {
+        {comments.map((comment, index) => {
           return (
-            <section className="card" key={comment.comment_id}>
+            <section className="card" key={index}>
               <h5>{comment.author}</h5>
               <p>{comment.body}</p>
             </section>

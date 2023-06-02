@@ -10,7 +10,7 @@ import ArticlePage from "./ArticlePage";
 export const UserContext = createContext();
 
 function App() {
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState("");
   return (
     <div className="app">
       <UserContext.Provider value={{ currentUser, setCurrentUser }}>

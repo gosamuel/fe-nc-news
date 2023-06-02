@@ -1,20 +1,25 @@
 import { useState } from "react";
 import { sendComment } from "../utils/api";
 
-function CommentBuilder({ article_id, currentUser, setComments }) {
+function CommentBuilder({
+  article_id,
+  currentUser,
+  setComments,
+  newComment,
+  setNewComment,
+  comments,
+}) {
   const [commentBody, setCommentBody] = useState("");
-  const [newComment, setNewComment] = useState({});
 
   function handleSubmit(event) {
     event.preventDefault();
-    setNewComment({ author: currentUser, body: commentBody });
+
+    const newComment = { author: currentUser, body: commentBody };
 
     setComments((currComments) => {
       return [newComment, ...currComments];
     });
-    sendComment(currentUser, commentBody, article_id)
-      .then((result) => console.log(result, "then"))
-      .catch((err) => console.log(err, "err"));
+    sendComment(currentUser, commentBody, article_id);
     setCommentBody("");
   }
 
