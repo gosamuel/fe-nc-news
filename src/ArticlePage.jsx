@@ -26,6 +26,11 @@ function ArticlePage() {
     });
   }
 
+  function handleDelete(comment) {
+    setComments(comments.filter((com) => com.comment_id !== currentUser));
+    deleteComment(comment.comment_id);
+  }
+
   useEffect(() => {
     fetchArticleById(article_id).then((articleObj) => {
       setArticle(articleObj);
@@ -35,7 +40,7 @@ function ArticlePage() {
       setComments(theseComments);
       setIsLoading(false);
     });
-  }, [article_id]);
+  }, [article_id, comments]);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -78,7 +83,7 @@ function ArticlePage() {
               <button
                 onClick={() => {
                   if (comment.author === currentUser) {
-                    deleteComment(comment.comment_id);
+                    handleDelete(comment);
                   }
                 }}
               >

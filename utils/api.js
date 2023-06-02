@@ -34,6 +34,5 @@ export const sendComment = (currentUser, comment, article_id) => {
 };
 
 export const deleteComment = (comment_id) => {
-  console.log(comment_id);
   return myApi.delete(`/comments/${comment_id}`);
 };
